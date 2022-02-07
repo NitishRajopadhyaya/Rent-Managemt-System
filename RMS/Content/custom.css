@@ -5,3 +5,6 @@
 .display {
     display: none;
 }
+.content-wrapper {
+    background-color: #ffffff !important;
+}

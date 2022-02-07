@@ -52,9 +52,19 @@ var toasterror = function (msg) {
     toastr.error(msg)
 
 }
-
 //Data Table
-$("#myTable").DataTable({
-    "responsive": true, "lengthChange": false, "autoWidth": false,
-    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-}).buttons().container().appendTo('#myTable_wrapper .col-md-6:eq(0)');
+//$(document).ready(function () {
+$(function () {
+    $("table").DataTable().destroy();
+    $("table").DataTable({
+        
+    })
+});
+//$("#detailtable").DataTable({
+//})
+
+
+//})
+
+
+

@@ -6,7 +6,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h4> <b>Select Tenant</b></h4>
+        <b>Filters</b>
     </div>
     <div class="card-body">
 
@@ -89,7 +89,7 @@
                 dataType: 'json',
 
                 success: function (data) {
-                    console.log(data.FloorId);
+                    /*console.log(data.FloorId);*/
                     // states contains the JSON formatted list
                     // of states passed from the controller
                     $('#floorId').empty();
@@ -129,7 +129,6 @@
                 method: "post",
                 success: function (data) {
                     $('#Alert').hide();
-                    console.log("sucess");
                     $('#LastPaid').show();
                     $('#LoadingImage').hide();
                     $('#LastPaid').html(data);
@@ -215,7 +214,7 @@
                 },
 
                 error: function () {
-                    console.log("Error");
+                    toasterror("Error")
                 }
 
 
