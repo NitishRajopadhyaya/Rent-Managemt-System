@@ -1,0 +1,47 @@
+﻿@using BusinessModel.Home
+@model HomeModel
+
+@if (Model.IsSuccess)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>@Model.SuccessMessage</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+@if (!Model.IsSuccess && Model.flag == 1)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>@Model.SuccessMessage</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<div class="table-responsive">
+    <h1>Test for Transcation</h1>
+
+    <table class=" table table-bordered tab-content table-hover">
+        <thead>
+            <tr>
+                <th>BrandName</th>
+                <th>Availability</th>
+                <th>Purchase</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.list)
+            {
+                <tr class="info">
+                    <td>@item.BrandName</td>
+                    <td>@item.Availability</td>
+                    <td><a href="/Home/Edit/@item.id" class="btn btn-primary">Click To Buy 5 Bottles</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
