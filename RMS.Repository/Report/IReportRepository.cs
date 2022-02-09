@@ -12,7 +12,7 @@ namespace RMS.Repository.Report
     public interface IReportRepository
     {
         List<ReportModel> Getlist(ReportModel model);
-        ReportModel LastPaid(int? id);
+        ReportModel LastPaid(int? id , string year);
         ReportModel MonthlySummary(ReportModel model);
         List<ReportModel> DailyReport(ReportModel model);
     }
@@ -29,15 +29,15 @@ namespace RMS.Repository.Report
 
             var list = DapperService.Query<ReportModel>(sql, parameters).ToList();
 
-            return list;
+            return (List<ReportModel>)list;
 
         }
          
-        public ReportModel LastPaid(int? id)
+        public ReportModel LastPaid(int? id , string year)
         {
-            string sql = @"Select * from Payment where TenantID =@id";
+            string sql = @"select tenantId,floorId,PaidAmount,Dueamount,Advance,PaymentDate from payment where year(PaymentDate)=@Year and tenantId = '2'";
             var parameters = DapperService.AddParam(id);
-
+            parameters.Add("year", year);
             var model = DapperService.Query<ReportModel>(sql, parameters).LastOrDefault();
 
             return model;
@@ -45,9 +45,10 @@ namespace RMS.Repository.Report
 
         public ReportModel MonthlySummary(ReportModel model)
         {
-            string sql = @"select * from payment where MONTH(PaymentDate) = @Month and TenantId=@id";
+            string sql = @"select * from payment where MONTH(PaymentDate) = @Month and year(PaymentDate)=@Year and TenantId=@id";
             var parameter = DapperService.AddParam(model.TenantId);
             parameter.Add("Month", model.From);
+            parameter.Add("Year", model.Year);
 
              model = DapperService.Query<ReportModel>(sql, parameter).LastOrDefault();
              

@@ -31,6 +31,7 @@ namespace BusinessModel.Report
         public decimal? Advance { get; set; }
         public List<ReportModel> list { get; set; }
 
+        public string Year { get; set; }
         public decimal? TotalPaid { get; set; }
     }
 }

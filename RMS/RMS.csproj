@@ -2708,6 +2708,7 @@
     <Content Include="Scripts\tether.min.js" />
     <Compile Include="Utility\DBUtility.cs" />
     <Compile Include="Utility\Utilities.cs" />
+    <Content Include="Scripts\year-select.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

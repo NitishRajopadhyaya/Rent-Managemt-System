@@ -1,7 +1,7 @@
 ﻿@using BusinessModel.Report
 @model ReportModel
 
-
+<script src="~/Scripts/year-select.js"></script>
 
 
 <div class="card">
@@ -18,11 +18,16 @@
                             <label>Tenant Name</label>
                             @Html.DropDownListFor(x => x.TenantId, RMS.Utility.Utilities.GetTenant(), "Select Name", new { @class = "form-control", @id = "tenantId" })
                         </div>
-
+                        <div class="col-md-4">
+                            <label>year</label>
+                            <select id="yearselect" class="form-control" name="Year"></select>
+                            
+                        </div>
                         <div class="col-md-4 display" id="floorDisplayId">
                             <label>Floor</label>
                             @Html.DropDownListFor(x => x.FloorId, new SelectList(string.Empty), new { @class = "form-control", @id = "floorId", @readonly = true })
                         </div>
+
 
                     </div>
 
@@ -48,22 +53,10 @@
 <div id="LoadingImage" style="display:none">
     <img src="~/photo/Spinner-1s-200px.gif" width="100" height="100" style="vertical-align: middle; margin: 50px 450px" />
 </div>
-@*<div id="Alert" style="display:none">
-        <div id ="toast-container" class="toast-top-right" >
-            <div class="toast toast-error" role="alert" aria-live="assertive">
-                <div class="toast-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    please enter name
-                </div>
-            </div>
-
-        </div>
-    </div>*@
 
 
 
+@*<script src="~/Scripts/year-select.js"></script>*@
 
 <script>
     $(document).ready(function () {
@@ -136,7 +129,7 @@
                 },
 
                 error: function () {
-                    console.log("Error");
+                    toasterror("Error")
                 }
 
 
@@ -145,51 +138,8 @@
     }
 
 
-    //$.ajax({
-    //    url: "/Report/GetLastPaid",
-    //    data: $('#form').serialize(),
-    //    method: "post",
-    //    success: function (data) {
-    //        console.log("sucess");
-    //        $('#LastPaid').show();
-    //        $('#LoadingImage').hide();
-    //        $('#LastPaid').html(data);
-
-    //    },
-
-    //    error: function () {
-    //        console.log("Error");
-    //    }
-
-
-    //})
-
-
-    //var dynamicFn = function (htmlId1, htmlId2, htmlId3, url) {
-    //    $(htmlId1).hide();
-    //    $(htmlId2).hide();
-    //    $(htmlId3).show();
-
-
-    //    $.ajax({
-    //        url: url,
-    //        data: $('#form').serialize(),
-    //        method: "post",
-    //        success: function (data) {
-    //            console.log("sucess");
-    //            $('#LastPaid').show();
-    //            $('#LoadingImage').hide();
-    //            $('#LastPaid').html(data);
-
-    //        },
-
-    //        error: function () {
-    //            console.log("Error");
-    //        }
-
-
-    //    })
-    //}
+    
+   
 
     var MonthlySummary = function () {
         $('#Monthlysummary').hide();
@@ -222,6 +172,17 @@
 
         }
     }
+
+   
+    $('#yearselect').yearselect({
+
+        start: 1970,
+        end: new Date().getFullYear(),
+        step: 1,
+        order: 'desc',
+        displayAsValue: true
+
+    });
 
 
 </script>

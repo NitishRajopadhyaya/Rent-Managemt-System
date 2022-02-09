@@ -46,7 +46,7 @@ namespace RMS.Controllers
         public ActionResult GetLastPaid(ReportModel model)
       {
             
-            model = ser.LastPaid(model.TenantId);
+            model = ser.LastPaid(model.TenantId,model.Year);
             return View(model);
         }
 

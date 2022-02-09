@@ -23,10 +23,10 @@ namespace RMS.Service.Report
             
         }
 
-        public ReportModel LastPaid(int? id)
+        public ReportModel LastPaid(int? id , string year)
         {
             ReportModel model = new ReportModel();
-            model = repo.LastPaid(id);
+            model = repo.LastPaid(id ,year);
             return model;
         }
 

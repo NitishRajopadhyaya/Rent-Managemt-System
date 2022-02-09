@@ -1,4 +1,7 @@
-﻿var dynamicFn = function (htmlId1, htmlId2, htmlId3, url) {
+﻿
+
+
+var dynamicFn = function (htmlId1, htmlId2, htmlId3, url) {
     $(htmlId1).hide();
     $(htmlId2).hide();
     $(htmlId3).show();
@@ -60,11 +63,9 @@ $(function () {
         
     })
 });
-//$("#detailtable").DataTable({
-//})
 
 
-//})
+
 
 
 
