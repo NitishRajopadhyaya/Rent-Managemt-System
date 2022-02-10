@@ -30,11 +30,10 @@
                     <tr class="danger">
                         <th>Month</th>
                         <th>Paid Amount</th>
+                        <th>Entries</th>
                         <th>PaymentDate</th>
                         <th>DueAmount</th>
                         <th>Advance</th>
-                        <th>CreatedDate</th>
-
                     </tr>
                 </thead>
 
@@ -47,10 +46,10 @@
                         <tr class="info" onclick="MonthlyDetails(@item.From,@item.To,@Model.TenantId)" data-toggle="modal" data-target="#modal-lg">
                             <td>@RMS.Utility.Utilities.GetMonth(Convert.ToInt32(item.From))</td>
                             <td>@item.TotalPaid</td>
+                            <td>@item.TransactionCount</td>
                             <td>@item.PaymentDate</td>
                             <td>@item.DueAmount</td>
                             <td>@item.Advance</td>
-                            <td>@item.CreatedDate</td>
                         </tr>
                     }
 

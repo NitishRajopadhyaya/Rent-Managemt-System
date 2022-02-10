@@ -60,7 +60,7 @@ var toasterror = function (msg) {
 $(function () {
     $("table").DataTable().destroy();
     $("table").DataTable({
-        
+        "bSort": false
     })
 });
 
