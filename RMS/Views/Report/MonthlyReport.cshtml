@@ -1,6 +1,9 @@
 ﻿@using BusinessModel.Report
 @model ReportModel
 
+
+<script src="~/Scripts/year-select.js"></script>
+
 <div class="card">
     <div class="card-header">
         <h4><b>Select Month And Tenant Name</b></h4>
@@ -11,12 +14,12 @@
                 <div>
 
                     <div class="row form-group">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label>Tenant Name</label>
                             @Html.DropDownListFor(x => x.TenantId, RMS.Utility.Utilities.GetTenant(), "Select Name", new { @class = "form-control", @id = "tenantId" })
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label>From</label>
                             <select name="From" class="form-control">
                                 <option value="1">January</option>
@@ -33,7 +36,7 @@
                                 <option value="12">December</option>
                             </select>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label>TO</label>
                             <select name="To" class="form-control">
                                 <option value="1">January</option>
@@ -49,6 +52,11 @@
                                 <option value="11">November</option>
                                 <option value="12">December</option>
                             </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label>year</label>
+                            <select id="yearselect" class="form-control" name="Year"></select>
+
                         </div>
 
                     </div>
@@ -103,5 +111,13 @@
         }
     };
 
+    $('#yearselect').yearselect({
 
+        start: 1970,
+        end: new Date().getFullYear(),
+        step: 1,
+        order: 'desc',
+        displayAsValue: true
+
+    });
 </script>

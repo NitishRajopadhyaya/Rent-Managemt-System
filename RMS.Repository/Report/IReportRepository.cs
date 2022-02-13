@@ -21,11 +21,12 @@ namespace RMS.Repository.Report
     {
         public List<ReportModel> Getlist(ReportModel model)
         {
-            string sql = @"Select tenantId,floorId,PaidAmount,PaymentDate,DueAmount,Advance from payment where((MONTH(PaymentDate) between @From and @To) and tenantId = @Id)";
+            string sql = @"Select tenantId,floorId,PaidAmount,PaymentDate,DueAmount,Advance from payment where((MONTH(PaymentDate) between @From and @To) and year( PaymentDate)=@Year and tenantId = @Id)";
 
             var parameters = DapperService.AddParam(model.TenantId);
             parameters.Add("From", model.From);
             parameters.Add("To", model.To);
+            parameters.Add("Year", model.Year);
 
             var list = DapperService.Query<ReportModel>(sql, parameters).ToList();
 
